@@ -4,8 +4,12 @@ class Cash {
   late SharedPreferences prefs;
 
   static final Cash _instance = Cash._internal();
-  Cash._internal();
-  void init() async {
+
+  factory Cash() => _instance;
+  Cash._internal(){
+    init() ; 
+  }
+  Future<void> init() async {
     prefs = await SharedPreferences.getInstance();
   }
 
