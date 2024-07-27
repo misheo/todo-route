@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:todo/core/theme/app_theme.dart';
+import 'package:todo/screens/authentication/auth.dart';
+
 class TodoApp extends StatefulWidget {
   const TodoApp({super.key});
 
@@ -12,23 +15,28 @@ class _TodoAppState extends State<TodoApp> {
   @override
   void initState() {
     // TODO: implement initState
-    
+
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       initialRoute: '/',
-      localizationsDelegates: [
+      theme: AppTheme.lightTheme,
+      localizationsDelegates: const [
         AppLocalizations.delegate, // Add this line
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
-      supportedLocales: [
+      supportedLocales: const [
         Locale('en'), // English
         Locale('ar'), // Spanish
       ],
+      routes: {
+        '/': (context) => const AuthScreen(),
+      },
     );
   }
 }
