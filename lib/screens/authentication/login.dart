@@ -25,7 +25,6 @@ class _LoginScreenState extends State<LoginScreen> {
           password: _passwordController.text.trim());
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
-        print(e.code);
         if (mounted) {
           if (e.code == 'user-not-found') {
             showDialog(
