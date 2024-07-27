@@ -1,4 +1,18 @@
-
 {
-"app_title": "ToDo"
-}
+    "welcome": "welcome",
+    "appTitle": "ToDo",
+    "login": "login",
+    "signup": "signup",
+    "logout": "logout",
+    "resetPassword": "reset password",
+    "forgotPassword": "forgot password",
+    "home": "home",
+    "profile": "profile",
+    "edit": "edit",
+    "delete": "delete",
+    "add": "add",
+    "update": "update" , 
+    "email" : "email" , 
+    "password" : "password"
+  }
+  

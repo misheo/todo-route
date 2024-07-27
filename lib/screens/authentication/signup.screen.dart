@@ -16,18 +16,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final _passwordConfirmController = TextEditingController();
   final _firstNameController = TextEditingController();
   final _lastNameController = TextEditingController();
-  final _ageController = TextEditingController();
   Future addUserDetails(
     String firstName,
     String lastName,
     String email,
-    int age,
   ) async {
     await FirebaseFirestore.instance.collection('users').add({
       'firstName': firstName,
       'lastName': lastName,
       'email': email,
-      'age': age,
     });
   }
 
@@ -41,7 +38,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             _firstNameController.text.trim(),
             _lastNameController.text.trim(),
             _emailController.text.trim(),
-            int.parse(_ageController.text.trim()));
+            );
         //add user details
       } on FirebaseAuthException catch (e) {
         if (mounted) {
@@ -122,7 +119,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
     _passwordConfirmController.dispose();
     _firstNameController.dispose();
     _lastNameController.dispose();
-    _ageController.dispose();
     // _genderController.dispose();
 
     super.dispose();
@@ -135,7 +131,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
     final List<Widget> children = [
       Image.asset(
-        'asset/logo.png',
+        'assets/images/logo.png',
         height: 200,
       ),
       const SizedBox(
@@ -284,30 +280,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
               ),
             ),
-            const SizedBox(
-              height: 10,
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Container(
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: Theme.of(context).colorScheme.primary),
-                padding: const EdgeInsets.symmetric(horizontal: 10),
-                child: TextField(
-                  controller: _ageController,
-                  keyboardType: TextInputType.number,
-                  decoration: InputDecoration(
-                    border: InputBorder.none,
-                    hintText: 'AGE',
-                    hintStyle:
-                        Theme.of(context).textTheme.titleMedium!.copyWith(
-                            // fontWeight: FontWeight.bold,
-                            color: Theme.of(context).colorScheme.onPrimary),
-                  ),
-                ),
-              ),
-            ),
+          
             const SizedBox(
               height: 10,
             ),

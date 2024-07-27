@@ -1,7 +1,9 @@
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:todo/core/theme/app_colors.dart';
+import '../../core/widgets/app_text_filed.dart';
 import 'restet.password.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -38,7 +40,6 @@ class _LoginScreenState extends State<LoginScreen> {
                             child: const Text('Ok'))
                       ],
                     ));
-            print('No user found for that email.');
           } else if (e.code == 'wrong-password') {
             showDialog(
                 context: context,
@@ -52,7 +53,6 @@ class _LoginScreenState extends State<LoginScreen> {
                             child: const Text('Ok'))
                       ],
                     ));
-            print('Wrong password provided for that user.');
           }
         }
       }
@@ -78,14 +78,12 @@ class _LoginScreenState extends State<LoginScreen> {
         'assets/images/logo.png',
         height: 200,
       ),
-      
-   
       Expanded(
         child: ListView(
           shrinkWrap: true,
           children: [
             Text(
-              'login',
+              AppLocalizations.of(context)!.login,
               style: Theme.of(context).textTheme.titleLarge!.copyWith(
                     fontWeight: FontWeight.bold,
                     color: Theme.of(context).colorScheme.primary,
@@ -96,58 +94,51 @@ class _LoginScreenState extends State<LoginScreen> {
               height: 20,
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Container(
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: Theme.of(context).colorScheme.primary),
-                padding: const EdgeInsets.symmetric(horizontal: 10),
-                child: TextField(
-                  controller: _emailController,
-                  keyboardType: TextInputType.emailAddress,
-                  cursorColor: Theme.of(context).colorScheme.onPrimary,
-                  decoration: InputDecoration(
-                    border: InputBorder.none,
-                    hintText: 'EMAIL',
-                    hintStyle:
-                        Theme.of(context).textTheme.titleMedium!.copyWith(
-                            // fontWeight: FontWeight.bold,
-                            color: Theme.of(context).colorScheme.onPrimary),
-                  ),
-                ),
+              padding: EdgeInsets.symmetric(horizontal: 25.0.w),
+              child: AppTextFormField(
+                controller: _emailController,
+                hintText: AppLocalizations.of(context)!.email,
+                validator: (text) {
+                  if (text == null || text.isEmpty) {
+                    return 'Please enter your email';
+                  }
+                  if (!RegExp(
+                          r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                      .hasMatch(text)) {
+                    return 'Please enter a valid email';
+                  }
+                  if (text.length < 6) {
+                    return 'Please enter a valid email';
+                  }
+                  return null;
+                },
               ),
             ),
-            const SizedBox(
-              height: 10,
+             SizedBox(
+              height: 10.h,
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Container(
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: Theme.of(context).colorScheme.primary),
-                padding: const EdgeInsets.symmetric(horizontal: 10),
-                child: TextField(
-                  controller: _passwordController,
-                  keyboardType: TextInputType.visiblePassword,
-                  obscureText: true,
-                  cursorColor: Theme.of(context).colorScheme.onPrimary,
-                  decoration: InputDecoration(
-                    border: InputBorder.none,
-                    hintText: 'PASSWORD',
-                    hintStyle:
-                        Theme.of(context).textTheme.titleMedium!.copyWith(
-                            // fontWeight: FontWeight.bold,
-                            color: Theme.of(context).colorScheme.onPrimary),
-                  ),
-                ),
+             Padding(
+              padding: EdgeInsets.symmetric(horizontal: 25.0.w),
+              child: AppTextFormField(
+                controller: _passwordController,
+                hintText: AppLocalizations.of(context)!.password,
+                validator: (text) {
+                  if (text == null || text.isEmpty) {
+                    return 'Please enter your password';
+                  }
+                  if (text.length < 6) {
+                    return 'Please enter a valid password';
+                  }
+                  return null;
+                },
               ),
             ),
-            const SizedBox(
-              height: 10,
+
+            SizedBox(
+              height: 10.h,
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 50.0),
+              padding: EdgeInsets.symmetric(horizontal: 50.0.w),
               child: ElevatedButton(
                 onPressed: () {
                   _login();
@@ -156,9 +147,12 @@ class _LoginScreenState extends State<LoginScreen> {
                   shape: const RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(
                     Radius.circular(20),
-                  )),
+                  ) , 
+                  
+                  ),
+                  backgroundColor:  AppColors.primary
                 ),
-                child: Text('LOGIN'),
+                child: Text(AppLocalizations.of(context)!.login),
               ),
             ),
             const SizedBox(
@@ -174,8 +168,8 @@ class _LoginScreenState extends State<LoginScreen> {
                 textAlign: TextAlign.center,
               ),
               onTap: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) =>  ResetScreen()));
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => ResetScreen()));
               },
             ),
             const SizedBox(
