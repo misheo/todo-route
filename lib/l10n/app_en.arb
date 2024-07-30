@@ -13,6 +13,12 @@
     "add": "add",
     "update": "update" , 
     "email" : "email" , 
-    "password" : "password"
+    "password" : "password" ,
+    "language" : "language" , 
+    "theme" : "theme" , 
+    "arabic" : "arabic" , 
+    "english" : "english" , 
+    "dark" : "dark" ,
+    "light" : "light"
   }
   

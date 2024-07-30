@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 import 'package:todo/core/theme/app_colors.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:todo/provider/settings_provider.dart';
+import 'package:todo/screens/tasks_screen.dart';
+
+import 'setting/setting_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -11,6 +16,11 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final List<Widget> _pages =const  [
+    TasksScreen(),
+     SettingScreen(),
+    
+  ];
   int _index = 0;
   @override
   Widget build(BuildContext context) {
@@ -30,13 +40,14 @@ class _HomeScreenState extends State<HomeScreen> {
                 height: 100.h,
                 color: AppColors.primary,
               ),
+              _pages[_index]
             ],
           )
         ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
-        child: IconButton(icon: const Icon(Icons.add) , onPressed: (){}),
+        child: IconButton(icon: const Icon(Icons.add), onPressed: () {}),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(
