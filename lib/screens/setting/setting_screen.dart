@@ -82,7 +82,7 @@ class _SettingScreenState extends State<SettingScreen> {
                                   child: Text(
                                     AppLocalizations.of(context)!.arabic,
                                     style:
-                                        Theme.of(context).textTheme.bodyLarge,
+                                        Theme.of(context).textTheme.titleMedium,
                                   ),
                                 ),
                               ),
@@ -111,7 +111,7 @@ class _SettingScreenState extends State<SettingScreen> {
                                         AppLocalizations.of(context)!.english,
                                         style: Theme.of(context)
                                             .textTheme
-                                            .bodyLarge,
+                                            .titleMedium,
                                       ),
                                     ))),
                           ],
@@ -137,9 +137,9 @@ class _SettingScreenState extends State<SettingScreen> {
                   children: [
                     provider.language == "ar"
                         ? Center(
-                            child: Text(AppLocalizations.of(context)!.arabic))
+                            child: Text(AppLocalizations.of(context)!.arabic, style:  Theme.of(context).textTheme.titleMedium))
                         : Center(
-                            child: Text(AppLocalizations.of(context)!.english)),
+                            child: Text(AppLocalizations.of(context)!.english , style:  Theme.of(context).textTheme.titleMedium),),
                     IconButton(
                       onPressed: () {
                         // provider.changeLanguage();
@@ -208,7 +208,7 @@ class _SettingScreenState extends State<SettingScreen> {
                                   child: Text(
                                     AppLocalizations.of(context)!.light,
                                     style:
-                                        Theme.of(context).textTheme.bodyLarge,
+                                        Theme.of(context).textTheme.titleMedium,
                                   ),
                                 ),
                               ),
@@ -237,7 +237,7 @@ class _SettingScreenState extends State<SettingScreen> {
                                         AppLocalizations.of(context)!.dark,
                                         style: Theme.of(context)
                                             .textTheme
-                                            .bodyLarge,
+                                            .titleMedium,
                                       ),
                                     ))),
                           ],
@@ -263,9 +263,9 @@ class _SettingScreenState extends State<SettingScreen> {
                   children: [
                     provider.themeMode == ThemeMode.dark
                         ? Center(
-                            child: Text(AppLocalizations.of(context)!.dark))
+                            child: Text(AppLocalizations.of(context)!.dark , style:  Theme.of(context).textTheme.titleMedium))
                         : Center(
-                            child: Text(AppLocalizations.of(context)!.light)),
+                            child: Text(AppLocalizations.of(context)!.light , style:  Theme.of(context).textTheme.titleMedium)),
                     IconButton(
                       onPressed: () {
                         // provider.changeLanguage();

@@ -47,7 +47,7 @@ class TodoWidget extends StatelessWidget {
           ),
           child: Container(
             padding: EdgeInsets.symmetric(horizontal: 20.0.w, vertical: 10.h),
-            color: Colors.white,
+            color:  Theme.of(context).colorScheme.onSecondary,
             height: 100.h,
             width: double.infinity,
             child: Row(
