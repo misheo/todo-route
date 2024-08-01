@@ -31,6 +31,12 @@ class _TasksScreenState extends State<TasksScreen> {
           ),
           dayProps: const EasyDayProps(
             dayStructure: DayStructure.dayStrDayNum,
+            inactiveDayStyle: DayStyle(
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.all(Radius.circular(8)),
+              ),
+            ),
             activeDayStyle: DayStyle(
               decoration: BoxDecoration(
                 color: Colors.white,
