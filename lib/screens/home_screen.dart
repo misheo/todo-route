@@ -6,6 +6,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:todo/provider/settings_provider.dart';
 import 'package:todo/screens/tasks_screen.dart';
 
+import '../widgets/add_task_sheet.dart';
 import 'setting/setting_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -16,10 +17,9 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final List<Widget> _pages =const  [
+  final List<Widget> _pages = const [
     TasksScreen(),
-     SettingScreen(),
-    
+    SettingScreen(),
   ];
   int _index = 0;
   @override
@@ -46,8 +46,12 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        child: IconButton(icon: const Icon(Icons.add), onPressed: () {}),
+        onPressed: () { print('here we are ') ; 
+          showModalBottomSheet(
+            context: context,
+            builder: (context) => AddTaskSheet(),
+          );} ,
+        child: Icon(Icons.add),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(

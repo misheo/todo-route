@@ -19,6 +19,13 @@
     "arabic" : "arabic" , 
     "english" : "english" , 
     "dark" : "dark" ,
-    "light" : "light"
+    "light" : "light" , 
+    "title" : "title" ,
+    "description" : "description" ,
+    "selectedDate" : "selected Date" , 
+    "titleRequired" : "title is required" ,
+    "descriptionRequired" : "description is required" , 
+    "date" : "date" , 
+    "addTask" : "add task"
   }
   
