@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
+import 'package:todo/provider/tasks_provider.dart';
 
 import '../core/models/task.dart';
 import '../core/networking/firebase_api.dart';
@@ -23,6 +25,7 @@ class _AddTaskSheetState extends State<AddTaskSheet> {
   TextEditingController descriptionController = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<TaskProvider>(context);
     return Padding(
       padding:
           EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
@@ -134,23 +137,33 @@ class _AddTaskSheetState extends State<AddTaskSheet> {
                       final User? user = FirebaseAuth.instance.currentUser;
 
                       if (user != null) {
-                        FirebaseApi.addTaskToFirebase(Task(
+                       bool isSuccess =  provider.addTask(Task(
                                 '',
                                 user.uid,
                                 titleController.text,
                                 descriptionController.text,
                                 selectedDate,
-                                false))
-                            .then((value) {
-                          if (kDebugMode) {
-                            print('here we are');
-                          }
-                          Navigator.of(context).pop([
-                            titleController.text,
-                            descriptionController.text,
-                            selectedDate
-                          ]);
-                        });
+                                false)) ;
+                              
+                                  Navigator.of(context).pop();
+                                  
+                          
+
+                        // FirebaseApi.addTaskToFirebase(Task(
+                        //         '',
+                        //         user.uid,
+                        //         titleController.text,
+                        //         descriptionController.text,
+                        //         selectedDate,
+                        //         false))
+                        //     .then((value) {
+                       
+                        //   Navigator.of(context).pop([
+                        //     titleController.text,
+                        //     descriptionController.text,
+                        //     selectedDate
+                        //   ]);
+                        // });
                       }
                     }
                   },

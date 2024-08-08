@@ -6,6 +6,7 @@ import 'package:todo/todo_app.dart';
 
 import 'core/helper/cash.dart';
 import 'provider/settings_provider.dart';
+import 'provider/tasks_provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,8 +20,12 @@ void main() async {
   );
 
   // Start the app with the SettingsProvider
-  runApp(ChangeNotifierProvider(
-    create: (BuildContext context) => SettingsProvider(),
+  runApp(MultiProvider(
+    // create: (BuildContext context) => SettingsProvider(),
+    providers: [
+      ChangeNotifierProvider(create: (context) => SettingsProvider()),
+      ChangeNotifierProvider(create: (context) => TaskProvider()),
+    ],
     child: const TodoApp(),
   ));
 }
