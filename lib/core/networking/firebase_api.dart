@@ -33,7 +33,8 @@ class FirebaseApi {
     }
     return [];
   }
-//   static Future<List<Task>> deleteTask() async {
 
-// }
+  static Future<void> deleteTask(Task task) async {
+    getTaskCollection().doc(task.id).delete();
+  }
 }

@@ -15,26 +15,30 @@ class TaskProvider extends ChangeNotifier {
   Future<void> getAllTasks() async {
     tasks = await FirebaseApi.getTasksFromFirebase();
 
-   tasks =  tasks.where((task) {
-if (task.date.year == selectDate.year && task.date.month == selectDate.month && task.date.day == selectDate.day) {
-  return true ; 
-}
-return false ;
-   }).toList();
+    tasks = tasks.where((task) {
+      if (task.date.year == selectDate.year &&
+          task.date.month == selectDate.month &&
+          task.date.day == selectDate.day) {
+        return true;
+      }
+      return false;
+    }).toList();
     notifyListeners();
   }
 
-    bool addTask(Task task) {
+  bool addTask(Task task) {
     FirebaseApi.addTaskToFirebase(task).then((_) {
       tasks.add(task);
       notifyListeners();
       return true;
     });
-    return false ; 
+    return false;
   }
 
   void removeTask(Task task) {
-    tasks.remove(task);
+    FirebaseApi.deleteTask(task).then((_) {
+      tasks.remove(task);
+    });
     notifyListeners();
   }
 

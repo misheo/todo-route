@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:provider/provider.dart';
 
 import '../core/models/task.dart';
 import '../core/theme/app_colors.dart';
+import '../provider/tasks_provider.dart';
 
 class TodoWidget extends StatelessWidget {
   TodoWidget({super.key, required this.task});
@@ -11,6 +13,7 @@ class TodoWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<TaskProvider>(context);
     return Container(
       margin: EdgeInsets.only(bottom: 20.0.h),
       child: Padding(
@@ -34,7 +37,9 @@ class TodoWidget extends StatelessWidget {
               children: [
                 // A SlidableAction can have an icon and/or a label.
                 SlidableAction(
-                  onPressed: (sa) {},
+                  onPressed: (sa) {
+                      provider.removeTask(task);
+                  },
                   backgroundColor: Color(0xFFFE4A49),
                   foregroundColor: Colors.white,
                   icon: Icons.delete,
