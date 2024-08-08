@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:easy_date_timeline/easy_date_timeline.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
-import 'package:todo/core/networking/firebase_api.dart';
 
-import '../core/models/task.dart';
 import '../core/theme/app_colors.dart';
 import '../provider/tasks_provider.dart';
 import '../widgets/todo_widget.dart';
@@ -17,8 +15,7 @@ class TasksScreen extends StatefulWidget {
 }
 
 class _TasksScreenState extends State<TasksScreen> {
-  final EasyInfiniteDateTimelineController _controller =
-      EasyInfiniteDateTimelineController();
+
   @override
   void initState() {
     Provider.of<TaskProvider>(context, listen: false).getAllTasks();

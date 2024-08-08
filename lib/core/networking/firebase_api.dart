@@ -37,4 +37,10 @@ class FirebaseApi {
   static Future<void> deleteTask(Task task) async {
     getTaskCollection().doc(task.id).delete();
   }
+    static Future<void> updateTask(Task task) async {
+    var taskCollection = getTaskCollection();
+
+    // Update the document with the new data
+    await taskCollection.doc(task.id).update(task.toJson());
+  }
 }

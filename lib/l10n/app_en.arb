@@ -26,6 +26,9 @@
     "titleRequired" : "title is required" ,
     "descriptionRequired" : "description is required" , 
     "date" : "date" , 
-    "addTask" : "add task"
+    "addTask" : "add task" , 
+    "delete" : "delete" , 
+    "edit" : "edit" ,
+    "editTask" : "edit task" 
   }
   

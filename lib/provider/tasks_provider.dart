@@ -43,8 +43,12 @@ class TaskProvider extends ChangeNotifier {
   }
 
   void updateTask(Task task) {
+    FirebaseApi.updateTask(task).then((_) {
+      
     tasks.remove(task);
     tasks.add(task);
+    }) ; 
+
     notifyListeners();
   }
 }

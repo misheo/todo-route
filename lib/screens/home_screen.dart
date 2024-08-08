@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:provider/provider.dart';
 import 'package:todo/core/theme/app_colors.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:todo/provider/settings_provider.dart';
 import 'package:todo/screens/tasks_screen.dart';
 
 import '../widgets/add_task_sheet.dart';
@@ -46,12 +44,12 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () { print('here we are ') ; 
+        onPressed: () { 
           showModalBottomSheet(
             context: context,
-            builder: (context) => AddTaskSheet(),
+            builder: (context) => const AddTaskSheet(),
           );} ,
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(
