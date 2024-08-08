@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
+import '../core/models/task.dart';
 import '../core/theme/app_colors.dart';
 
 class TodoWidget extends StatelessWidget {
-  const TodoWidget({super.key});
+   TodoWidget({super.key, required this.task});
+   Task task ; 
 
   @override
   Widget build(BuildContext context) {
@@ -56,15 +58,15 @@ class TodoWidget extends StatelessWidget {
                 Container(
                   width: 3.w,
                   height: double.infinity,
-                  color: AppColors.primary,
+                  color: task.isCompleted ? AppColors.green : AppColors.primary,
                 ),
                 Column(
                   // mainAxisAlignment: MainAxisAlignment.s,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('Tas'),
+                    Text(task.title),
                     Row(children: [
-                      Text('Today'),
+                      Text(task.description),
                     ])
                   ],
                 ),

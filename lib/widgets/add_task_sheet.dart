@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:intl/intl.dart';
-import 'package:todo/core/models/task.dart';
-import 'package:todo/core/networking/firebase_api.dart';
 
+import '../core/models/task.dart';
+import '../core/networking/firebase_api.dart';
 import '../core/widgets/app_text_filed.dart';
 
 class AddTaskSheet extends StatefulWidget {
